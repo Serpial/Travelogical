@@ -16,6 +16,19 @@ overflow-x:hidden;
 font-weight:bold;
 }
 
+.error-text
+{
+color:red;
+font-size:1rem;
+}
+
+.success-text
+{
+color:green;
+font-size:1rem;
+}
+
+
 /*	GRID UTILS	*/
 .vspacer
 {
