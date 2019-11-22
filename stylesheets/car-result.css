@@ -1,0 +1,33 @@
+.result-bigtext
+{
+background-color:rgba(0,0,0,0);
+font-size:24w;
+}
+
+.result-smalltext
+{
+width:100%;
+color:#4f4f4f;
+margin-top:-5%;
+}
+
+#back-link
+{
+
+cursor:pointer;
+text-decoration:none;
+color:black;
+font-size:0.8rem;
+
+margin-top:5%;
+
+}
+
+#back-link p
+{
+display:inline-block;
+width:auto;
+-webkit-box-shadow: 0px 2px 0px 0px rgba(0,0,0,1);
+-moz-box-shadow: 0px 2px 0px 0px rgba(0,0,0,1);
+box-shadow: 0px 2px 0px 0px rgba(0,0,0,1);
+}

@@ -1,0 +1,94 @@
+#error-box
+{
+margin-top:5vh;
+margin-left:auto;
+margin-right:auto;
+height:15vh;
+width:60vw;
+text-align:center;
+}
+
+.error-text
+{
+color:red;
+font-size:1rem;
+}
+
+#login-wrapper
+{
+
+min-width:400px;
+min-height:200px;
+width:60vw;
+height:40vh;
+
+margin-left:auto;
+margin-right:auto;
+
+display:grid;
+grid-template-columns: 10% 20% 20% 20% 20% 10%;
+grid-template-rows: 10% 20% 5% 12% 5% 12% 9% 14% 16%;
+	
+}
+
+.login-smalltext
+{
+background-color:rgba(0,0,0,0);
+width:100%;
+color:#4f4f4f;
+margin-top:3%;
+font-size:1.1rem;
+}
+
+.login-input
+{
+font-size:1rem;
+padding-left:3%;
+padding-right:3%;
+border:none;
+border-radius:0;
+-webkit-box-shadow: 0px 4px 0px 0px #d9d9d9;
+-moz-box-shadow: 0px 4px 0px 0px #d9d9d9;
+box-shadow: 0px 4px 0px 0px #d9d9d9;
+}
+
+.login-input:focus
+{
+-webkit-box-shadow: 0px 4px 0px 0px rgba(0,0,0,1);
+-moz-box-shadow: 0px 4px 0px 0px rgba(0,0,0,1);
+box-shadow: 0px 4px 0px 0px rgba(0,0,0,1);
+}
+
+#register-link
+{
+text-decoration:none;
+font-size:0.8rem;
+color:#d9d9d9;
+width:30%;
+}
+
+#register-link:hover
+{
+text-decoration:underline;
+}
+
+
+#login-submit
+{
+float:right;
+margin-right:0;
+width:50%;
+background:none;	
+border:none;
+-webkit-box-shadow: 0px 3px 0px 0px rgba(0,0,0,1);
+-moz-box-shadow: 0px 3px 0px 0px rgba(0,0,0,1);
+box-shadow: 0px 3px 0px 0px rgba(0,0,0,1);
+}
+
+#login-submit:hover
+{
+cursor:pointer;
+-webkit-box-shadow: 0px 4px 0px 0px rgba(0,0,0,0);
+-moz-box-shadow: 0px 4px 0px 0px rgba(0,0,0,0);
+box-shadow: 0px 4px 0px 0px rgba(0,0,0,0);
+}

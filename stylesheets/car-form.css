@@ -1,0 +1,66 @@
+.radio-container
+{
+display:inline-block;
+}
+
+.radio-container input 
+{
+position: absolute;
+opacity: 0;
+cursor: pointer;
+height: 0;
+width: 0;
+}
+
+.radio-container-container
+{
+width:100%;
+}
+
+.radio-custom 
+{
+height:2.5rem;
+width:3.3rem;
+background-color:white;
+overflow:hidden;
+-webkit-box-shadow: 0px 4px 0px 0px #e0e0d1;
+-moz-box-shadow: 0px 4px 0px 0px #e0e0d1;
+box-shadow: 0px 4px 0px 0px #e0e0d1;
+color:#2e2e1f;
+font-size:0.8rem;
+text-align:center;
+}
+
+.radio-container:hover .radio-custom 
+{
+background-color:#e0e0d1;
+cursor:pointer;
+}
+
+.radio-container input:checked ~ .radio-custom 
+{
+-webkit-box-shadow: 0px 4px 0px 0px rgba(0,0,0,1);
+-moz-box-shadow: 0px 4px 0px 0px rgba(0,0,0,1);
+box-shadow: 0px 4px 0px 0px rgba(0,0,0,1);
+outline:none;
+color:black;
+}
+
+#form-submit
+{
+background:none;
+
+-webkit-box-shadow: 0px 4px 0px 0px rgba(0,0,0,1);
+-moz-box-shadow: 0px 4px 0px 0px rgba(0,0,0,1);
+box-shadow: 0px 4px 0px 0px rgba(0,0,0,1);
+	
+border:none;
+}
+
+#form-submit:hover
+{	
+-webkit-box-shadow: 0px 4px 0px 0px rgba(0,0,0,0);
+-moz-box-shadow: 0px 4px 0px 0px rgba(0,0,0,0);
+box-shadow: 0px 4px 0px 0px rgba(0,0,0,0);	
+cursor:pointer;
+}

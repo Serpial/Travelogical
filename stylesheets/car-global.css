@@ -1,0 +1,164 @@
+/*	VANILLA	*/
+*
+{
+margin:0;
+padding:0;
+font-family:'Alata',sans-serif;
+}
+
+body
+{
+overflow-x:hidden;
+}
+
+.bold
+{
+font-weight:bold;
+}
+
+/*	GRID UTILS	*/
+.vspacer
+{
+grid-column-start:1;
+grid-column-end:6;
+background-color:rgba(0,0,0,0);
+}
+
+.hspacer
+{
+grid-row-start:4;
+background-color:rgba(0,0,0,0);
+}
+
+/*	PAGE	*/
+#content-wrapper
+{
+background-color:white;
+min-width:700px;
+min-height:400px;
+width:60vw;
+height:70vh;
+
+margin-left:auto;
+margin-right:auto;
+
+display:grid;
+grid-template-columns: 8% 40% 4% 40% 8%;
+grid-template-rows: 5% 10% 5% 75% 5%;
+
+}
+
+.location-input
+{
+margin-top:2%;
+margin-bottom:2%;
+font-size:1.2rem;
+padding-left:3%;
+padding-right:3%;
+border:none;
+border-radius:0;
+background:none;
+}
+
+.location-input:focus
+{
+background-color:white;
+-webkit-box-shadow: 0px 4px 0px 0px rgba(0,0,0,1);
+-moz-box-shadow: 0px 4px 0px 0px rgba(0,0,0,1);
+box-shadow: 0px 4px 0px 0px rgba(0,0,0,1);
+}
+
+#todescriptor
+{
+text-align:center;
+padding-top:30%;
+
+grid-column-start:3;
+grid-column-end:4;
+grid-row-start:2;
+grid-row-end:4;
+
+font-size:0.8rem;
+}
+
+.fa-arrow-right
+{
+font-size:1rem;
+}
+
+#from-input
+{
+text-align:right;
+grid-column-start:2;
+grid-column-end:3;
+margin-right:5%;
+
+grid-row-start:2;
+grid-row-end:3;
+}
+
+#to-input
+{
+grid-column-start:4;
+grid-column-end:5;
+margin-left:5%;
+
+grid-row-start:2;
+grid-row-end:3;
+}
+
+#map-view
+{
+
+display:inline-grid;
+grid-template-columns: 10% 90%;
+grid-template-rows: 100%;
+
+width:80%;
+background-color:lightgrey;
+grid-row-start:4;
+grid-column-start:2;
+
+background: url("../maptemp.png") center;
+
+}
+
+#route-save-button
+{
+	
+writing-mode:vertical-rl;
+grid-column-start:1;
+grid-column-end:2;
+grid-row-start:1;
+grid-row-end:3;
+
+display:inline-block;
+
+background-color:rgba(224, 224, 209,1);
+opacity:30%;
+text-align:center;
+margin-bottom:0px;
+
+}
+
+#map-view:hover #route-save-button
+{
+opacity:100%;
+}
+
+#route-save-button:hover
+{
+cursor:pointer;
+}
+
+#info-form
+{
+
+grid-row-start:4;
+grid-column-start:4;
+
+display:grid;
+grid-template-columns: 15% 35% 50%;
+grid-template-rows: 5% 15% 20% 15% 20% 10% 10% 5%;
+
+}

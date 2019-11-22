@@ -1,0 +1,10 @@
+@media screen and (max-width: 800px)
+{
+	
+#content-wrapper
+{
+margin-left:0;
+margin-right:0;
+}
+
+}
