@@ -233,7 +233,7 @@ echo '<div class="vspacer" style="grid-row-start:5;"></div>';
   ?>;
 </script>
 <script src="mapsClient.js" type='text/javascript'></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqQzNsSyFNG1PIAgBYUwRKT8POFFxBv0c?>&callback=initMap"
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqQzNsSyFNG1PIAgBYUwRKT8POFFxBv0c&callback=initMap"
     async defer></script>
 
 </html>
