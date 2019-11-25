@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php 
-
-$submitted = isset($_POST['submit-button']);
+require_once "mapsServerside.php";
+$submitted = isset($_POST['submit_button']);
 
 if ($submitted===true)
 {
@@ -12,10 +12,22 @@ extract($_POST);
 // Engine size: $enginetype = int 2 to 6
 
 // GET LOCATION DATA THROUGH TOO
+if ($to_input!="" && $from_input!="")
+{
+  $places = [
+    grabPlaceID($from_input),
+    grabPlaceID($to_input)
+  ];
 
+  $coords = [
+    getLongAndLat(htmlspecialchars($places[0])),
+    getLongAndLat(htmlspecialchars($places[1]))
+  ];
+
+  $distance = getDistance($places[0], $places[1]);
+  $names = getPlaceNames($places[0], $places[1]);
 }
-
-
+}
 ?>
 
 <html><head>
@@ -46,17 +58,17 @@ extract($_POST);
 </header><br>
 
 
-<div id="content-wrapper">
+<form id="content-wrapper" method="post" onsubmit="return(validateMainForm());">
 <div class="vspacer" style="grid-row-start:1;"></div>
 
-<input type="text" <?php if ($submitted === true) {echo 'placeholder="location 1" disabled';} else {echo 'placeholder="here"';} ?> class="location-input" id="from-input"/>
+<input type="text" <?php if ($submitted === true) {echo 'placeholder="'.$names[0].'" disabled';} else {echo 'placeholder="here"';} ?> class="location-input" id="from-input" name="from_input"/>
 
 <div id="todescriptor">
 <p>to</p>
 <i class="fas fa-arrow-right"></i>
 </div>
 
-<input type="text" <?php if ($submitted === true) {echo 'placeholder="location 2" disabled';} else {echo 'placeholder="here"';} ?> class="location-input" id="to-input"/>
+<input type="text" <?php if ($submitted === true) {echo 'placeholder="'.$names[1].'" disabled';} else {echo 'placeholder="here"';} ?> class="location-input" id="to-input" name="to_input"/>
 
 <div class="hspacer" style="grid-column-start:1;"></div>
 
@@ -68,7 +80,7 @@ extract($_POST);
 
 <div class="hspacer" style="grid-column-start:3;"></div>
 
-<form id="info-form" method="post" onsubmit="return(validateMainForm());">
+<div id="info-form">
 
 <?php // First Header
 if ($submitted === true)
@@ -177,7 +189,7 @@ echo '<input id="form-submit" type="submit" name="submit-button" value="Go" styl
 }
 ?>
 
-</form>
+</div>
 
 <div class="hspacer" style="grid-column-start:5;"></div>
 
@@ -197,7 +209,7 @@ echo '<div class="vspacer" style="grid-row-start:5;"></div>';
 
 ?>
 
-</div>
+</form>
 
 
 <footer>
@@ -208,4 +220,20 @@ echo '<div class="vspacer" style="grid-row-start:5;"></div>';
 
 </footer>
 
-</body></html>
+</body>
+
+<script>
+  var place1 = <?php echo (isset($coords)? $coords[0]: "null")?>;
+  var place2 = <?php echo (isset($coords)? $coords[1]: "null")?>;
+  var distance = <?php if (isset($coords)) {
+      echo json_encode($distance);
+    } else {
+      echo "null";
+    } 
+  ?>;
+</script>
+<script src="mapsClient.js" type='text/javascript'></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?php echo API_KEY?>&callback=initMap"
+    async defer></script>
+
+</html>
