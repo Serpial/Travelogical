@@ -122,18 +122,12 @@ grid-row-end:3;
 
 #map-view
 {
-
-display:inline-grid;
-grid-template-columns: 10% 90%;
-grid-template-rows: 100%;
-
-width:80%;
+width:95%;
+margin: 0 auto;
 background-color:lightgrey;
 grid-row-start:4;
 grid-column-start:2;
-
 /* background: url("../maptemp.png") center; */
-
 }
 
 #route-save-button
