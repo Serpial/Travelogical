@@ -1,5 +1,5 @@
 <?php
-const API_KEY = "";
+require_once "api_key.php";
 
 function grabPlaceID ($place) {
     $link  = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?";

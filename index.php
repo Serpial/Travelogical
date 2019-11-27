@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php 
 require_once "mapsServerside.php";
-$submitted = isset($_POST['submit_button']);
+$submitted = isset($_POST['submit-button']);
 
 if ($submitted===true)
 {
