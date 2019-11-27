@@ -19,11 +19,35 @@ text-decoration:none;
 color:black;
 font-size:0.8rem;
 
-margin-top:5%;
+margin-top:2%;
+float:left;
+margin-left: 0px;
 
 }
 
-#back-link p
+#map-controls
+{
+width:100%;
+grid-row-start:5;
+grid-column-start:2;
+grid-column-end:3;
+}
+
+#save-link
+{
+
+cursor:pointer;
+text-decoration:none;
+color:black;
+font-size:0.8rem;
+
+margin-top:2%;
+float: right;
+text-align:right;
+
+}
+
+#back-link p, #save-link p
 {
 display:inline-block;
 width:auto;

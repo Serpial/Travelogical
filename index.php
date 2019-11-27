@@ -206,8 +206,10 @@ echo '<input id="form-submit" type="submit" name="submit-button" value="Go" styl
 
 if ($submitted===true)
 {
-echo '<a href="index.php" id="back-link" style="grid-row-start:5;grid-column-start:2;grid-column-end:3;"><p>back</p></a>
-<div class="vspacer" style="grid-row-start:5;grid-column-start:3;"></div>';
+echo '<div id="map-controls">
+<a href="index.php" id="back-link"><p>back</p></a>
+<a href="#SAVE" id="save-link"><p>save</p></a></div>
+<div class="vspacer" style="grid-row-start:5;grid-column-start:3;clear:both;"></div>';
 }
 else
 {
