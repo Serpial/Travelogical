@@ -15,8 +15,8 @@ extract($_POST);
 if ($to_input!="" && $from_input!="")
 {
   $places = [
-    grabPlaceID($from_input),
-    grabPlaceID($to_input)
+    grabPlaceID(filter_var($from_input, FILTER_SANITIZE_STRING)),
+    grabPlaceID(filter_var($to_input, FILTER_SANITIZE_STRING))
   ];
 
   $coords = [
@@ -30,6 +30,9 @@ if ($to_input!="" && $from_input!="")
   if ($distance[1] === 0) {
     $submitted = false;
   }
+} else
+{
+    $submitted = false;
 }
 }
 ?>

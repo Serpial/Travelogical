@@ -1,11 +1,12 @@
 function initMap() {
     // Place is set as global in the DOM
+    var georgeRoad = {lat:53.389723, lng:-3.171382}
     var livingstoneTower = {lat:55.860983, lng: -4.243554};
     var bounds = new google.maps.LatLngBounds();
     var directionsRenderer = new google.maps.DirectionsRenderer;
     var directionsService = new google.maps.DirectionsService;
     var map = new google.maps.Map(document.getElementById("map-view"), {
-        center: livingstoneTower,
+        center: georgeRoad,
         disableDefaultUI: true,
         gestureHandling: "none"
     });
@@ -24,7 +25,7 @@ function initMap() {
         directionsRenderer.setMap(map);
         addRouteToMap(directionsService, directionsRenderer);
     } else {
-        map.setZoom(12);
+        map.setZoom(16.8);
     }
 }
 
@@ -51,3 +52,4 @@ function findNewCenter(place1, place2) {
 
     return {lat:newLat, lng:newLng};
 }
+

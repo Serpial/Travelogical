@@ -1,3 +1,5 @@
+// TODO: Add validation for the to and from text boxes
+
 function validateMainForm()
 {
 
