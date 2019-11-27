@@ -24,8 +24,12 @@ if ($to_input!="" && $from_input!="")
     getLongAndLat(htmlspecialchars($places[1]))
   ];
 
-  $distance = getDistance($places[0], $places[1]);
   $names = getPlaceNames($places[0], $places[1]);
+  $distance = getDistance($places[0], $places[1]);
+  // Just in case the car cant 
+  if ($distance[1] === 0) {
+    $submitted = false;
+  }
 }
 }
 ?>
