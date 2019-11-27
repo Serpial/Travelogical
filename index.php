@@ -206,9 +206,9 @@ echo '<input id="form-submit" type="submit" name="submit-button" value="Go" styl
 
 if ($submitted===true)
 {
-echo '<div id="map-controls">
+echo '<div id="map-controls" style="grid-row-start:5;grid-row-end:6;grid-column-start:2;grid-column-end:3;">
 <a href="index.php" id="back-link"><p>back</p></a>
-<a href="#SAVE" id="save-link"><p>save</p></a></div>
+<a href="#SAVE" id="save-button"><p>save</p></a></div>
 <div class="vspacer" style="grid-row-start:5;grid-column-start:3;clear:both;"></div>';
 }
 else
