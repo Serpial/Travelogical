@@ -26,6 +26,8 @@ if ($to_input!="" && $from_input!="")
 
   $names = getPlaceNames($places[0], $places[1]);
   $distance = getDistance($places[0], $places[1]);
+  $cycleTime = getTimeCycle($places[0], $places[1]);
+  
   // Just in case the car cant 
   if ($distance[1] === 0) {
     $submitted = false;
@@ -189,7 +191,7 @@ echo '<div class="radio-container-container" style="grid-column-start:2;grid-col
 <?php // Final element
 if ($submitted === true)
 {
-echo '<h1 class="result-bigtext" style="grid-column-start:1;grid-column-end:4;grid-row-start:7;grid-row-end:8;">It would only take x minutes to cycle.</h1>';
+echo '<h1 class="result-bigtext" style="grid-column-start:1;grid-column-end:4;grid-row-start:7;grid-row-end:8;">It would only take '.(floor($cycleTime/60)).' minutes to cycle.</h1>';
 }
 else
 {
