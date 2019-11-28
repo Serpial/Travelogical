@@ -150,15 +150,16 @@
   function yearlyPrice($journeyCost) {
     $yearlyCost = 240*$journeyCost;
     return $yearlyCost;
+    
   }
   
   function annualEmissions($emissions) {
     $annualDamage = 240*$emissions;
-    return $annualDamage;  
+    return $annualDamage;
   }
   
   function poundsPence($cost) {
-    $cost = number_format($cost, 2, ".", "");
+    $cost = number_format($cost);
     return $cost;  
   }
   
