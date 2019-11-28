@@ -54,6 +54,7 @@ if ($to_input!="" && $from_input!="")
 <script src="https://kit.fontawesome.com/08b9c3aade.js" crossorigin="anonymous"></script>
 
 <script src="formValidation.js"></script>
+<script src="dynamicUtils.js"></script>
 
 </head>
 
@@ -208,8 +209,10 @@ echo '<input id="form-submit" type="submit" name="submit-button" value="Go" styl
 
 if ($submitted===true)
 {
-echo '<a href="index.php" id="back-link" style="grid-row-start:5;grid-column-start:2;grid-column-end:3;"><p>back</p></a>
-<div class="vspacer" style="grid-row-start:5;grid-column-start:3;"></div>';
+echo '<div id="map-controls" style="grid-row-start:5;grid-row-end:6;grid-column-start:2;grid-column-end:3;">
+<a href="index.php" id="back-link"><p>back</p></a>
+<a href="#SAVE" id="save-button"><p>save</p></a></div>
+<div class="vspacer" style="grid-row-start:5;grid-column-start:3;clear:both;"></div>';
 }
 else
 {
@@ -220,7 +223,19 @@ echo '<div class="vspacer" style="grid-row-start:5;"></div>';
 
 </form>
 
+<br>
 
+<?php if ($submitted===false)
+{
+echo '<div id="instructions" class="closed">
+<a href="javascript:hideInstructions()"><h3 id="instructions-title">Instructions <i id="instructions-arrow" class="far fa-plus-square"></i></a></h3>
+<br>
+<p id="instructions-text">Tell us about your commute at the top of the page (where you come from and where you go), then describe your car (your engine size and fuel type) and we\'ll give you some insight into your impact on the planet and what you can do about it.</p>
+
+</div>';
+}
+?>
+<br>
 <footer>
 
 <div id="footer-container">

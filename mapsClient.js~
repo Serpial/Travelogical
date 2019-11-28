@@ -9,7 +9,7 @@ function initMap() {
         center: georgeRoad,
         disableDefaultUI: true,
         gestureHandling: "none",
-        clickableIcons: false
+        clickable: false
     });
 
 
