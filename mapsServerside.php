@@ -1,6 +1,8 @@
 <?php
 require_once "api_key.php";
 
+$distanceInfo = NULL;
+
 function grabPlaceID ($place) {
     $link  = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?";
     $link .= "input=".replaceSpace($place);
@@ -38,8 +40,28 @@ function getLongAndLat($placeID) {
     return NULL;
 }
 
+function getTimeCycle($placeIDOne, $placeIDTwo) {
+    $link  = 'https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial';
+    $link .= '&origins=place_id:'.$placeIDOne.'&destinations=place_id:'.$placeIDTwo;
+    $link .= '&mode=bicycling';
+    $link .= '&key='.API_KEY;
+
+    $sourceJSON = file_get_contents($link);
+    $cycleInfo = json_decode($sourceJSON);
+    $placeStatus = $cycleInfo->status;
+    $routeStatus = $cycleInfo->rows[0]->elements[0]->status;
+
+    if ($routeStatus != "ZERO_RESULTS" && $placeStatus == "OK") {
+        return $cycleInfo->rows[0]->elements[0]->duration->value;
+    }
+    return NULL;
+}
+
 function getDistance($placeIDOne, $placeIDTwo) {
-    $distanceInfo = grabDistanceInformation($placeIDOne, $placeIDTwo);
+    global $distanceInfo;
+    if ($distanceInfo == NULL) {
+        $distanceInfo = grabDistanceInformation($placeIDOne, $placeIDTwo);
+    }
     $distance = ["",0];
 
     if ($distanceInfo != NULL) {
@@ -52,7 +74,10 @@ function getDistance($placeIDOne, $placeIDTwo) {
 }
 
 function getPlaceNames($placeIDOne, $placeIDTwo) {
-    $distanceInfo = grabDistanceInformation($placeIDOne, $placeIDTwo);
+    global $distanceInfo;
+    if ($distanceInfo == NULL) {
+        $distanceInfo = grabDistanceInformation($placeIDOne, $placeIDTwo);
+    }
     $names = ["", ""];
 
     if ($distanceInfo != NULL) {
@@ -80,12 +105,12 @@ function grabDistanceInformation($placeIDOne, $placeIDTwo) {
     $link .= '&key='.API_KEY;
 
     $sourceJSON = file_get_contents($link);
-    $distanceInfo = json_decode($sourceJSON);
-    $placeStatus = $distanceInfo->status;
-    $routeStatus = $distanceInfo->rows[0]->elements[0]->status;
+    $tempInfo = json_decode($sourceJSON);
+    $placeStatus = $tempInfo->status;
+    $routeStatus = $tempInfo->rows[0]->elements[0]->status;
 
     if ($routeStatus != "ZERO_RESULTS" && $placeStatus == "OK") {
-        return $distanceInfo;
+        return $tempInfo;
     }
     return NULL;
 }
