@@ -27,6 +27,8 @@ if ($to_input!="" && $from_input!="")
 
   $names = getPlaceNames($places[0], $places[1]);
   $distance = getDistance($places[0], $places[1]);
+  $cycleTime = getTimeCycle($places[0], $places[1]);
+  
   // Just in case the car cant 
   if ($distance[1] === 0) {
     $submitted = false;
@@ -53,6 +55,7 @@ if ($to_input!="" && $from_input!="")
 <script src="https://kit.fontawesome.com/08b9c3aade.js" crossorigin="anonymous"></script>
 
 <script src="formValidation.js"></script>
+<script src="dynamicUtils.js"></script>
 
 </head>
 
@@ -203,7 +206,7 @@ echo '<div class="radio-container-container" style="grid-column-start:2;grid-col
 <?php // Final element
 if ($submitted === true)
 {
-echo '<h1 class="result-bigtext" style="grid-column-start:1;grid-column-end:4;grid-row-start:7;grid-row-end:8;">It would only take x minutes to cycle.</h1>';
+echo '<h1 class="result-bigtext" style="grid-column-start:1;grid-column-end:4;grid-row-start:7;grid-row-end:8;">It would only take '.(floor($cycleTime/60)).' minutes to cycle.</h1>';
 }
 else
 {
@@ -235,7 +238,19 @@ echo '<div class="vspacer" style="grid-row-start:5;"></div>';
 
 </form>
 
+<br>
 
+<?php if ($submitted===false)
+{
+echo '<div id="instructions" class="closed">
+<a href="javascript:hideInstructions()"><h3 id="instructions-title">Instructions <i id="instructions-arrow" class="far fa-plus-square"></i></a></h3>
+<br>
+<p id="instructions-text">Tell us about your commute at the top of the page (where you come from and where you go), then describe your car (your engine size and fuel type) and we\'ll give you some insight into your impact on the planet and what you can do about it.</p>
+
+</div>';
+}
+?>
+<br>
 <footer>
 
 <div id="footer-container">
