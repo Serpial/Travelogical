@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php 
 require_once "mapsServerside.php";
+require_once "calculations.php";
 $submitted = isset($_POST['submit-button']);
 
 if ($submitted===true)
@@ -101,12 +102,18 @@ echo '<p style="grid-column-start:1;grid-column-end:4;grid-row-start:2;grid-row-
 ?>
 
 <?php // First content
+
+$commuteEmissions = 0;
+$annualEmissions = 0;
 if ($submitted === true)
 {
+$commuteEmissions = calculateEmissions($distance[1], $fueltype, $enginetype);
+$annualEmissions = annualEmissions($commuteEmissions);
 echo '
 <div class="result-smalltext" style="grid-column-start:1;grid-column-end:4;grid-row-start:3;grid-row-end:4;">
 
-<p>Your commute creates around x tonnes of carbon footprint. In a year, that\'s about 240x tonnes. Too much.</p>
+<p>Your commute creates around '.round($commuteEmissions).' kilograms of carbon dioxide. 
+In a year, that\'s approximately '.round($annualEmissions).' kilograms of carbon dioxide. Too much.</p>
 
 </div>';
 
@@ -156,11 +163,19 @@ echo '<p style="grid-column-start:1;grid-column-end:4;grid-row-start:4;grid-row-
 ?>
 
 <?php // Second content
+$commuteCost = 0;
+$annualCost = 0;
+
 if ($submitted===true)
 {
+$commuteCost = calculatePrice($enginetype, $fueltype, $distance[1]);
+$annualCost = yearlyPrice($commuteCost);
+$commuteCost = poundsPence($commuteCost);
+$annualCost = poundsPence($annualCost);
 echo '<div class="result-smalltext" style="grid-column-start:1;grid-column-end:4;grid-row-start:5;grid-row-end:6;">
 
-<p>Your commute is costing you around £x.xx every day. About 240x times that every year, just for work. You could use that somewhere else.</p>
+<p>Your commute is costing you around £'.$commuteCost.' every day. That is approximately £'.$annualCost.' every year,
+just for work. You could use that somewhere else.</p>
 
 </div>';
 }
@@ -224,7 +239,7 @@ echo '<div class="vspacer" style="grid-row-start:5;"></div>';
 <footer>
 
 <div id="footer-container">
-<p>Map data/API ©2018 Google | Website and functionality created by Cameron Gemmell, Paul Hutchison, David McFadyen, Heather Thorburn, Ross Williamson for the Web Applications Development (CS312) Class, University of Strathclyde</p>
+<p>Map data/API ©2018 Google | Website and functionality created by Cameron Gemmell, Ross Williamson, Paul Hutchison, David McFadyen and Heather Thorburn for the Web Applications Development (CS312) Class, University of Strathclyde</p>
 </div>
 
 </footer>
