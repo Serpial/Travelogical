@@ -3,6 +3,7 @@
 require_once "mapsServerside.php";
 require_once "calculations.php";
 $submitted = isset($_POST['submit-button']);
+$to_input=$from_input=$fueltype=$enginetype="";
 
 if ($submitted===true)
 {
@@ -13,7 +14,7 @@ extract($_POST);
 // Engine size: $enginetype = int 2 to 6
 
 // GET LOCATION DATA THROUGH TOO
-if ($to_input!="" && $from_input!="")
+    if ($to_input!="" && $from_input!="")
 {
   $places = [
     grabPlaceID(filter_var($from_input, FILTER_SANITIZE_STRING)),
@@ -62,11 +63,27 @@ if ($to_input!="" && $from_input!="")
 <body>
 
 <header style="">
-<a href="logout.php" class="header-right">log out</a>
-<a href="myaccount.php" class="header-right">my account</a>
+    <?php session_start();
+    if (empty($_SESSION['userID'])) { ?>
+        <a href="login.php" class="header-right">log in</a>
+    <?php } else { ?>
+        <a href="myaccount.php" class="header-right">my account</a>
+        <a href="logout.php" class="header-right">log out</a>
+    <?php } ?>
+    <a href="index.php" class="header-left">home</a>
+</header>
+<br>
 
-<a href="index.php" class="header-left">home</a>
-</header><br>
+<?php if (isset($_GET['acc'])) {
+    $acc = $_GET['acc']; ?>
+    <div id="error-box" style="clear:both;"><p class="success-text">
+            <?php if ($acc == "reset") { ?>
+                Password successfully changed. Please log in.
+            <?php } else if ($acc == "created") { ?>
+                Account successfully created. Please log in. <?php } ?>
+        </p>
+    </div>
+<?php } ?>
 
 
 <form id="content-wrapper" method="post" onsubmit="return(validateMainForm());">
@@ -226,7 +243,7 @@ if ($submitted===true)
 {
 echo '<div id="map-controls" style="grid-row-start:5;grid-row-end:6;grid-column-start:2;grid-column-end:3;">
 <a href="index.php" id="back-link"><p>back</p></a>
-<a href="#SAVE" id="save-button"><p>save</p></a></div>
+<a href="#SAVE" type = "submit" id="save-button" onsubmit="return false"><p>save</p></a></div>
 <div class="vspacer" style="grid-row-start:5;grid-column-start:3;clear:both;"></div>';
 }
 else

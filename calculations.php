@@ -162,6 +162,10 @@
     $cost = number_format($cost);
     return $cost;  
   }
+
+  function saveRoute($start, $end, $cost, $emissions) {
+
+  }
   
   
 ?>    
