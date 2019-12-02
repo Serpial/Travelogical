@@ -241,6 +241,16 @@ echo '<input id="form-submit" type="submit" name="submit-button" value="Go" styl
 
 if ($submitted===true)
 {
+    if (isset($_SESSION['userID'])) {
+            $userID = $_SESSION['userID'];
+            $getSQL = "SELECT * FROM users WHERE user_id = '$userID'";
+            $getResult = $conn->query($getSQL);
+            $row = $getResult->fetch_assoc();
+            $curJourneys = $row['journeys'];
+            $curJourneys .= $names[0] . ":" . $names[1] . ":" . $commuteCost . ":" . $commuteEmissions . ";";
+            $sql = "UPDATE users SET journeys = '$curJourneys' WHERE user_id = '$userID'";
+            $curResult = $conn->query($sql);
+        }
 echo '<div id="map-controls" style="grid-row-start:5;grid-row-end:6;grid-column-start:2;grid-column-end:3;">
 <a href="index.php" id="back-link"><p>back</p></a>
 <a href="#SAVE" type = "submit" id="save-button" onsubmit="return false"><p>save</p></a></div>
