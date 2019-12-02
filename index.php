@@ -2,6 +2,8 @@
 <?php 
 require_once "mapsServerside.php";
 require_once "calculations.php";
+require "connectDB.php";
+
 $submitted = isset($_POST['submit-button']);
 $to_input=$from_input=$fueltype=$enginetype="";
 
