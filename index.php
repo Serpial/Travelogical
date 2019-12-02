@@ -11,7 +11,7 @@ if ($submitted===true)
 extract($_POST);
 
 // Fuel type: $fueltype = "diesel", "petrol" or "electric"
-// Engine size: $enginetype = int 2 to 6
+// Engine size: $enginetype = int 1.1 - 5+
 
 // GET LOCATION DATA THROUGH TOO
     if ($to_input!="" && $from_input!="")
@@ -30,7 +30,7 @@ extract($_POST);
   $distance = getDistance($places[0], $places[1]);
   $cycleTime = getTimeCycle($places[0], $places[1]);
   
-  // Just in case the car cant 
+  // Just in case the car can't 
   if ($distance[1] === 0) {
     $submitted = false;
   }
@@ -129,11 +129,12 @@ if ($submitted === true)
 {
 $commuteEmissions = calculateEmissions($distance[1], $fueltype, $enginetype);
 $annualEmissions = annualEmissions($commuteEmissions);
+$annualEmissions = numberCommas($annualEmissions);
 echo '
 <div class="result-smalltext" style="grid-column-start:1;grid-column-end:4;grid-row-start:3;grid-row-end:4;">
 
-<p>Your commute creates around '.round($commuteEmissions).' kilograms of carbon dioxide. 
-In a year, that\'s approximately '.round($annualEmissions).' kilograms of carbon dioxide. Too much.</p>
+<p>Your commute creates around '.$commuteEmissions.' kilograms of carbon dioxide. 
+In a year, that\'s approximately '.$annualEmissions.' kilograms of carbon dioxide. Too much.</p>
 
 </div>';
 
@@ -190,8 +191,7 @@ if ($submitted===true)
 {
 $commuteCost = calculatePrice($enginetype, $fueltype, $distance[1]);
 $annualCost = yearlyPrice($commuteCost);
-$commuteCost = poundsPence($commuteCost);
-$annualCost = poundsPence($annualCost);
+$annualCost = numberCommas($annualCost);
 echo '<div class="result-smalltext" style="grid-column-start:1;grid-column-end:4;grid-row-start:5;grid-row-end:6;">
 
 <p>Your commute is costing you around £'.$commuteCost.' every day. That is approximately £'.$annualCost.' every year,

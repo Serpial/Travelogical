@@ -5,7 +5,7 @@
   }
   
   function convertKM($distance) {
-    $distance *= 0.621371;
+    $distance /= 1000;
     return $distance;
   }
   
@@ -75,7 +75,8 @@
         $emissions = -420.69;
         break;        
     }      
-    return $emissions/1000;
+    $emissions/=1000;
+    return number_format($emissions, 2, ".", "");
   }
   
   function calculatePrice($engineSize, $engineType, $distance) {
@@ -144,7 +145,8 @@
         break;        
     }
 
-    return $journeyCost;
+    $journeyCost/=100;
+    return number_format($journeyCost, 2, ".", "");
   }
   
   function yearlyPrice($journeyCost) {
@@ -158,9 +160,9 @@
     return $annualDamage;
   }
   
-  function poundsPence($cost) {
+  function numberCommas($cost) {
     $cost = number_format($cost);
-    return $cost;  
+    return $cost;
   }
 
   function saveRoute($start, $end, $cost, $emissions) {
