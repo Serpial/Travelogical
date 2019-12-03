@@ -1,2 +1,4 @@
 # Get rid of private API_KEY
 api_key.php
+*.iml
+.idea/
