@@ -51,7 +51,7 @@ if (isset($_POST['login-submit']) && sizeof($errorArray) == 0) {
 <html>
 <head>
 
-    <title>CAR</title>
+    <title>Login - Travelogical</title>
 
     <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="stylesheets/car-global.css"/>
@@ -124,6 +124,11 @@ if (isset($_POST['login-submit']) && sizeof($errorArray) == 0) {
     <a href="register.php" id="register-link"
        style="grid-column-start:2;grid-column-end:3;grid-row-start:8;grid-row-end:9;">
         Register
+    </a>
+
+    <a href="forgot.php" id="forgot-link"
+       style="grid-column-start:3;grid-column-end:4;grid-row-start:8;grid-row-end:9;">
+        Forgot Password?
     </a>
 
     <input id="login-submit" value="Log In" name="login-submit" type="submit"

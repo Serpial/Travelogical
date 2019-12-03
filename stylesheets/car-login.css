@@ -66,6 +66,22 @@ width:30%;
 text-decoration:underline;
 }
 
+#forgot-link
+{
+    horiz-align: center;
+    text-align: center;
+    text-decoration:none;
+    font-size:0.8rem;
+    color:#d9d9d9;
+    width:30%;
+}
+
+#forgot-link:hover
+{
+    text-decoration:underline;
+}
+
+
 
 #login-submit
 {

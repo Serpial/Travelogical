@@ -39,7 +39,7 @@ if (isset($_POST['register-submit']) && sizeof($errorArray) == 0) {
 
 <html><head>
 
-<title>CAR</title>
+<title>Register - Travelogical</title>
 
 <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet"> 
 <link type="text/css" rel="stylesheet" href="stylesheets/car-global.css"/>

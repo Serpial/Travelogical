@@ -62,7 +62,7 @@ Team Travelogical</p>
 <html>
 <head>
 
-    <title>CAR</title>
+    <title>Forgotten Password - Travelogical</title>
 
     <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="stylesheets/car-global.css"/>

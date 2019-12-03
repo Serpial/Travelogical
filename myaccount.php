@@ -5,7 +5,7 @@
 <html>
 <head>
 
-    <title>CAR</title>
+    <title>My Account - Travelogical</title>
 
     <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="stylesheets/car-global.css"/>
@@ -41,8 +41,7 @@
         Account</h2>
 
     <p id="accounts-subheader" style="grid-row-start:3;grid-row-end:4;grid-column-start:2;grid-column-end:3;">Below is a
-        summary of all the journeys you've saved with us. You can save a journey on the site using the "save" button
-        after you've had your information calculated.</p>
+        summary of your most recent journeys you have calculated with us.</p>
 
     <table id="routes-table" style="grid-row-start:4;grid-row-end:5;grid-column-start:2;grid-column-end:3;">
 

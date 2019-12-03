@@ -36,7 +36,7 @@ if (isset($_POST['reset-submit'])) {
 <html>
 <head>
 
-    <title>CAR</title>
+    <title>Reset Password - Travelogical</title>
 
     <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="stylesheets/car-global.css"/>

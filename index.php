@@ -45,7 +45,7 @@ extract($_POST);
 
 <html><head>
 
-<title>CAR</title>
+<title>Home - Travelogical</title>
 
 <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet"> 
 <link type="text/css" rel="stylesheet" href="stylesheets/car-global.css"/>
@@ -255,7 +255,6 @@ if ($submitted===true)
         }
 echo '<div id="map-controls" style="grid-row-start:5;grid-row-end:6;grid-column-start:2;grid-column-end:3;">
 <a href="index.php" id="back-link"><p>back</p></a>
-<a href="#SAVE" type = "submit" id="save-button" onsubmit="return false"><p>save</p></a></div>
 <div class="vspacer" style="grid-row-start:5;grid-column-start:3;clear:both;"></div>';
 }
 else
