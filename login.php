@@ -90,7 +90,7 @@ if (isset($_POST['login-submit']) && sizeof($errorArray) == 0) {
     </p> <?php } ?>
 </div>
 
-<form id="login-wrapper" method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>">
+<form id="login-wrapper" method="POST" action="<?php echo substr($_SERVER["PHP_SELF"],1); ?>">
 
     <div class="hspacer" style="grid-column-start:1;grid-column-end:1;grid-row-start:1;grid-row-end:10;"></div>
     <div class="hspacer" style="grid-column-start:6;grid-column-end:7;grid-row-start:1;grid-row-end:10;"></div>
