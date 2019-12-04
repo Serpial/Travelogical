@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 
-if (isset($_POST['forgot-submit']) && empty($emailErr)) {
+if (isset($_POST['login-submit']) && empty($emailErr)) {
     require 'connectDB.php';
     $findSQL = "SELECT * FROM users WHERE email = '$userEmail'";
     $findResult = $conn->query($findSQL);
