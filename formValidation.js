@@ -18,8 +18,8 @@ if (fuelSelected==null)
 }
 
 // Check location entry isn't empty
-var toVal = document.getElementById("from-input").value;
-var fromVal = document.getElementById("to-input").value;
+var toVal = document.getElementById("to-input").value;
+var fromVal = document.getElementById("from-input").value;
 
 if (!(toVal && fromVal))
 {

@@ -5,6 +5,7 @@ require_once "calculations.php";
 require "connectDB.php";
 
 $submitted = isset($_POST['submit-button']);
+$erroredPlaceNames = [false, false];
 $to_input=$from_input=$fueltype=$enginetype="";
 
 if ($submitted===true)
@@ -16,29 +17,38 @@ extract($_POST);
 // Engine size: $enginetype = int 1.1 - 5+
 
 // GET LOCATION DATA THROUGH TOO
-    if ($to_input!="" && $from_input!="")
+if ($to_input!="" && $from_input!="")
 {
   $places = [
     grabPlaceID(filter_var($from_input, FILTER_SANITIZE_STRING)),
     grabPlaceID(filter_var($to_input, FILTER_SANITIZE_STRING))
   ];
-
-  $coords = [
-    getLongAndLat(htmlspecialchars($places[0])),
-    getLongAndLat(htmlspecialchars($places[1]))
-  ];
-
-  $names = getPlaceNames($places[0], $places[1]);
-  $distance = getDistance($places[0], $places[1]);
-  $cycleTime = getTimeCycle($places[0], $places[1]);
   
-  // Just in case the car can't 
-  if ($distance[1] === 0) {
+  if ($places[0]!=NULL && $places[1]!=NULL)
+  {
+    $coords = [
+      getLongAndLat($places[0]),
+      getLongAndLat($places[1])
+    ];
+    $names = getPlaceNames($places[0], $places[1]);
+    $distance = getDistance($places[0], $places[1]);
+    $cycleTime = getTimeCycle($places[0], $places[1]);
+    
+    if ($distance[1] === 0) {
+      $submitted = false;
+    }
+  } else
+  {
+    $erroredPlaceNames[0] = $places[0] == NULL;
+    $erroredPlaceNames[1] = $places[1] == NULL;    
+    $names = ["", ""];
+    $distance = ["",0];
+    $cycleTime = NULL;
     $submitted = false;
   }
 } else
 {
-    $submitted = false;
+  $submitted = false;
 }
 }
 ?>
@@ -91,14 +101,15 @@ extract($_POST);
 <form id="content-wrapper" method="post" onsubmit="return(validateMainForm());">
 <div class="vspacer" style="grid-row-start:1;"></div>
 
-<input type="text" <?php if ($submitted === true) {echo 'placeholder="'.$names[0].'" disabled';} else {echo 'placeholder="here"';} ?> class="location-input" id="from-input" name="from_input"/>
+<input type="text" placeholder=<?php if ($submitted === true) {echo '"'.$names[0].'" disabled';} else {if ($erroredPlaceNames[0]) {echo "'Invalid place'";} else {if ($from_input!="") {echo '"" value="'.$from_input.'"';} else {echo "here";}}} ?> class="location-input" id="from-input" name="from_input"/>
 
 <div id="todescriptor">
 <p>to</p>
 <i class="fas fa-arrow-right"></i>
 </div>
 
-<input type="text" <?php if ($submitted === true) {echo 'placeholder="'.$names[1].'" disabled';} else {echo 'placeholder="here"';} ?> class="location-input" id="to-input" name="to_input"/>
+<input type="text" placeholder=<?php if ($submitted === true) {echo '"'.$names[1].'" disabled';} else {if
+    ($erroredPlaceNames[1]) {echo "'Invalid place'";} else {if ($to_input!="") {echo '"" value="'.$to_input.'"';} else {echo "here";}}} ?> class="location-input" id="to-input" name="to_input"/>
 
 <div class="hspacer" style="grid-column-start:1;"></div>
 

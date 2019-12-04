@@ -14,11 +14,8 @@ function grabPlaceID ($place) {
     // please
     if ($placeInfo->status == "OK") {
         return $placeInfo->candidates[0]->place_id;
-    } else {
-        echo "placeinfo failed : ". $place;
-        die();
-    }    
-    return null;    
+    }
+    return NULL;
 }
 
 function replaceSpace($string) {
