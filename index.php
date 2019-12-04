@@ -104,7 +104,6 @@ extract($_POST);
 
 <div id="map-view">
 
-<?php if ($submitted===true) { echo '<div id="route-save-button">Save Route?</div>'; } ?>
 
 </div>
 
