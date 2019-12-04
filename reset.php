@@ -1,9 +1,6 @@
 <?php
 
 session_start();
-if ($_SESSION['userID']!=null); {
-    header ("Location: index.php");
-}
 
 $code = "";
 $code = $_GET['code'];
@@ -28,7 +25,7 @@ if (isset($_POST['reset-submit'])) {
     $hashedPass = password_hash($password, PASSWORD_DEFAULT);
     $resetSQL = "UPDATE users SET hashed_pass = '$hashedPass', reset = NULL WHERE reset = '$code'";
     $resetResult = $conn->query($resetSQL);
-    header("Location: final_assignment/index.php?acc=reset");
+    header("Location: index.php?acc=reset");
 }
 ?>
 
